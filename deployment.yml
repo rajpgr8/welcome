@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: app-welcome
+spec: 
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-welcome
+  template: 
+    metadata: 
+      labels:
+        app: app-welcome
+    spec:
+      containers:
+        - name: app-welcome
+          image: [IMAGE] 
+          resources: 
+            limits: 
+              memory: "512Mi"
+              cpu: "500m"
+          ports: 
+          - containerPort: 9091
+
+---
+
+apiVersion: v1
+kind: Service
+metadata: 
+  name: app-welcome-svc
+spec: 
+  type: LoadBalancer
+  selector: 
+    app: app-welcome
+  ports: 
+  - protocol: TCP
+    port: 9091
+    targetPort: 9091
