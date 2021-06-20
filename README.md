@@ -11,4 +11,7 @@ python3 src/app.py
 docker build -t app-welcome .
 docker-compose up --build
 kubectl apply -f deployment.yml
+
+docker tag app-welcome-image gcr.io/[PROJECT_ID]/[REPO_NAME]:latest
+docker push gcr.io/[PROJECT_ID]/[REPO_NAME]:latest
 ```
