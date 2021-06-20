@@ -15,4 +15,10 @@ kubectl apply -f deployment.yml
 docker tag app-welcome-image gcr.io/[PROJECT_ID]/[REPO_NAME]:latest
 docker push gcr.io/[PROJECT_ID]/[REPO_NAME]:latest
 docker run -p 9091:9091 gcr.io/[PROJECT_ID]/[REPO_NAME]:latest
+
+helm create my-app
+helm lint my-app
+helm package my-app
+helm chart push [Artifactory REPO]
+
 ```
