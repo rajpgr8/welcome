@@ -1,0 +1,9 @@
+version: '3'
+services:
+  node_app:
+    container_name: app-welcome
+    image: app-welcome-image
+    build:
+      context: .     
+    ports:
+            - "9091:9091"
