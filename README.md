@@ -14,4 +14,5 @@ kubectl apply -f deployment.yml
 
 docker tag app-welcome-image gcr.io/[PROJECT_ID]/[REPO_NAME]:latest
 docker push gcr.io/[PROJECT_ID]/[REPO_NAME]:latest
+docker run -p 9091:9091 gcr.io/[PROJECT_ID]/[REPO_NAME]:latest
 ```
