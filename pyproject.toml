@@ -1,0 +1,9 @@
+[tool.shrinkwrap]
+requirements_file = "requirements.txt"
+output_path = "build_output"
+
+[tool.shrinkwrap.build]
+
+[build-system]
+
+[tool.black]
