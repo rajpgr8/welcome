@@ -10,7 +10,7 @@ pipeline {
         stage('test') {
             steps {
                 sh 'pwd'
-                sh 'python3 -m pip install pytest'
+                sh 'python3 -m venv env && source .venv/bin/activate && python3 -m pip install pytest'
                 sh 'pytest'
             }
         }
