@@ -11,7 +11,7 @@ pipeline {
             steps {
                 sh 'pwd'
                 sh 'python3 -m venv env && . env/bin/activate'
-                //sh 'pytest'
+                sh 'pytest'
             }
         }
         stage('package') {
