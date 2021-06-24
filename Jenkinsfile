@@ -9,12 +9,15 @@ pipeline {
         }
         stage('test') {
             steps {
-                sh 'python3 --version'
+                sh 'pwd'
+                sh 'python3 -m pip install pytest'
+                sh 'pytest'
             }
         }
         stage('package') {
             steps {
-                sh 'pytest'
+                sh 'python3 --version'
+                
             }
         }
     }
