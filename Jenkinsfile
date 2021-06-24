@@ -1,20 +1,15 @@
 pipeline {
     agent any
     stages {
-        stage('setup') {
-            steps {
-                sh 'docker pull python:3.7.3-alpine'
-                sh 'python --version'
-            }
-        }
         stage('build') {
             steps {
-                sh 'python --version'
+                sh 'docker-compose up --build'
+                sh 'python3 --version'
             }
         }
         stage('test') {
             steps {
-                sh 'python --version'
+                sh 'python3 --version'
             }
         }
         stage('package') {
