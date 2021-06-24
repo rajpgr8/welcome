@@ -14,7 +14,7 @@ pipeline {
         }
         stage('test') {
             steps {
-                '
+                sh 'python --version'
             }
         }
         stage('package') {
