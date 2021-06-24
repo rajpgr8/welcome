@@ -1,6 +1,12 @@
 pipeline {
-    agent { docker { image 'python:3.5.1' } }
+    agent { any }
     stages {
+        stage('setup') {
+            steps {
+                sh 'docker pull python:3.7.3-alpine'
+                sh 'python --version'
+            }
+        }
         stage('build') {
             steps {
                 sh 'python --version'
@@ -8,8 +14,7 @@ pipeline {
         }
         stage('test') {
             steps {
-                sh 'pip3 install pytest'
-                sh 'pytest'
+                '
             }
         }
         stage('package') {
