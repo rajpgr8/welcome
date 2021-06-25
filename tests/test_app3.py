@@ -15,6 +15,8 @@ class BaseLogger:
 @pytest.mark.usefixtures("setup")
 class TestExample(BaseLogger):
   def test_fixtureDemo_1(self):
+    log = self.getLogger()
+    log.info("test_fixtureDemo_1")
     print("test_fixtureDemo_1")
     
   def test_fixtureDemo_2(self):
