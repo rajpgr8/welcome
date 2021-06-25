@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route("/")                   
 @app.route('/hindi')
-def Welcome():                      # call method hello
+def Welcome():                      # call method Welcome
     return "Aapka Swagat Hai"    
 
 @app.route('/english')
