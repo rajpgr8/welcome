@@ -12,3 +12,8 @@ def test_1stTest_2():
 def test_1stTest_3():
   print("1stTest-3")
   assert 1 == 1
+
+@pytest.mark.skip  
+def test_1stTest_4():
+  print("1stTest-4")
+  assert 1 == 1
