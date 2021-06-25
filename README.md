@@ -8,13 +8,6 @@ source venv/bin/activate
 pip3 install -r requirements.txt
 python3 src/app.py
 
-pytest:
----------
-virtualenv -p python3 venv
-source venv/bin/activate
-pip3 install pytest
-pytest -v -s --junit-xml=report.xml
-
 docker build -t app-welcome .
 docker-compose up --build
 kubectl apply -f deployment.yml
@@ -29,4 +22,13 @@ helm lint my-app
 helm package my-app
 helm chart push [Artifactory REPO]
 
+
+pytest:
+---------
+virtualenv -p python3 venv
+source venv/bin/activate
+pip3 install pytest
+pytest -v -s --junit-xml=report.xml           (run all test cases in all files) 
+pytest -v -s -k 1st --junit-xml=report.xml    (run only test cases having '1st' in the test case name in the all test files)  -k <>
+pytest -v -s -m smoke --junit-xml=report.xml  (run only test cases maked as 'smoke' in the all test files) -m <>
 ```
