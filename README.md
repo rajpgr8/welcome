@@ -33,5 +33,5 @@ pytest -v -s -k 1st --junit-xml=report.xml    (run only test cases having '1st' 
 pytest -v -s -m smoke --junit-xml=report.xml  (run only test cases maked as 'smoke' in the all test files) -m <>
 Note 1: 'test_1stTest_4' will always be skipped
 Note 2: fixture method setup() defined in conftest.py file will always be executed fisrt before the test related to that fixture, 
-        so setup() method will be executed befote 'test_1stTest_fistureTest' test run.
+        so setup() method will be executed befote 'test_1stTest_fistureTest' and 'test_2ndTest_3' test run.
 ```
