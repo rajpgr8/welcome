@@ -8,20 +8,21 @@ source venv/bin/activate
 pip3 install -r requirements.txt
 python3 src/app.py
 
-only test:
+pytest:
+---------
 virtualenv -p python3 venv
 source venv/bin/activate
 pip3 install pytest
-pytest
+pytest -v -s --junit-xml=report.xml
 
 docker build -t app-welcome .
 docker-compose up --build
 kubectl apply -f deployment.yml
 watch kubectl get pods,deployments,services
 
-docker tag app-welcome-image gcr.io/[PROJECT_ID]/[REPO_NAME]:latest
-docker push gcr.io/[PROJECT_ID]/[REPO_NAME]:latest
-docker run -p 9091:9091 gcr.io/[PROJECT_ID]/[REPO_NAME]:latest
+docker tag welcome_image gcr.io/[PROJECT_ID]/welcome_image:latest
+docker push gcr.io/[PROJECT_ID]/welcome_image:latest
+docker run -p 9091:9091 gcr.io/[PROJECT_ID]/welcome_image:latest
 
 helm create my-app
 helm lint my-app
