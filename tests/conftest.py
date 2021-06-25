@@ -8,3 +8,10 @@ def setup():
 def loadSomeData():
   print("loadSomeData: ***loadSomeData()***")
   return ["Joe", 3, 700]
+
+
+@pytest.fixture(params=["IE", "FF", "C"])
+def parameterizedOption(request):
+  print("parameterizedOption: ***parameterizedOption()***")
+  return request.param
+
