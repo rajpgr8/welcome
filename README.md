@@ -31,5 +31,7 @@ pip3 install pytest
 pytest -v -s --junit-xml=report.xml           (run all test cases in all files)
 pytest -v -s -k 1st --junit-xml=report.xml    (run only test cases having '1st' in the test case name in the all test files)  -k <>
 pytest -v -s -m smoke --junit-xml=report.xml  (run only test cases maked as 'smoke' in the all test files) -m <>
-(Note: test_1stTest_4 will always be skipped)
+Note 1: 'test_1stTest_4' will always be skipped
+Note 2: fixture method setup() will always be executed fisrt before the test related to that fixture, 
+        so setup() method will be executed befote 'test_1stTest_fistureTest' test run.
 ```
