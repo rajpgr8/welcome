@@ -11,7 +11,8 @@ pipeline {
             steps {
                 sh 'pwd'
                 sh 'python3 -m venv env && . env/bin/activate'
-                sh 'pytest'
+                sh 'pytest -v -s --junit-xml=report.xml'
+                sh 'cat report.xml'
             }
         }
         stage('package') {
