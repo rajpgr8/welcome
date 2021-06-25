@@ -17,3 +17,7 @@ def test_1stTest_3():
 def test_1stTest_4():
   print("1stTest-4")
   assert 1 == 1
+ 
+def test_1stTest_fistureTest(setup):
+  print("1stTest-fistureTest")
+  assert 1 == 1
