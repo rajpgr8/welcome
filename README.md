@@ -35,4 +35,5 @@ Note 1: 'test_1stTest_4' will always be skipped
 Note 2: fixture method setup() defined in conftest.py file will always be executed fisrt before the test related to that fixture, 
         so setup() method will be executed befote 'test_1stTest_fistureTest' and 'test_2ndTest_2' test run.
         similarly we can wrap all tests (which are dependent on fixture method) into a class (see test_app3.py) and mark that class as usefixtures.
+Note 3: we can pass data from fixture method also we can parametrize our test case (see conftest.py and test_app3.py)
 ```
