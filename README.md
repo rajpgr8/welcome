@@ -28,7 +28,7 @@ pytest:
 virtualenv -p python3 venv
 source venv/bin/activate
 pip3 install pytest
-pytest -v -s --junit-xml=report.xml           (run all test cases in all files) 
+pytest -v -s --junit-xml=report.xml           (run all test cases in all files) (Note: test_1stTest_4 will be skipped)
 pytest -v -s -k 1st --junit-xml=report.xml    (run only test cases having '1st' in the test case name in the all test files)  -k <>
 pytest -v -s -m smoke --junit-xml=report.xml  (run only test cases maked as 'smoke' in the all test files) -m <>
 ```
