@@ -2,5 +2,5 @@ import pytest
 
 @pytest.fixture()
 def setup():
-  print("setup: ***should be exceuted this setup() before other fixture test run***")
+  print("setup: ***setup() will be executed before any other tests (dependent on this fixture) run***")
 
