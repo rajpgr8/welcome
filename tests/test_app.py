@@ -4,6 +4,7 @@ def test_1stTest_1():
   print("1stTest-1")
   assert 1 == 1
   
+@pytest.mark.smoke  
 def test_1stTest_2():
   print("1stTest-2")
   assert 1 == 1
