@@ -17,6 +17,11 @@ docker tag welcome_image gcr.io/[PROJECT_ID]/welcome_image:latest
 docker push gcr.io/[PROJECT_ID]/welcome_image:latest
 docker run -p 9091:9091 gcr.io/[PROJECT_ID]/welcome_image:latest
 
+Stop and remove all containers: [THINK BEFORE USE]
+docker stop $(docker ps -q)
+docker rm $(docker ps -aq)
+docker image prune -a
+
 helm create my-app
 helm lint my-app
 helm package my-app
