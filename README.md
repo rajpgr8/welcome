@@ -9,14 +9,13 @@ source venv/bin/activate
 pip3 install -r requirements.txt
 python3 src/app.py
 
-docker build -t app-welcome .
+docker build -t welcome_image .
+docker tag welcome_image k3d-mycluster-registry:5000/welcome_image:v0.1
+docker push k3d-mycluster-registry:5000/welcome_image:v0.1
+docker run -p 9091:9091 k3d-mycluster-registry:5000/welcome_image:v0.1
+OR
 docker-compose up --build
-kubectl apply -f deployment.yml
-watch kubectl get pods,deployments,services
 
-docker tag welcome_image gcr.io/[PROJECT_ID]/welcome_image:latest
-docker push gcr.io/[PROJECT_ID]/welcome_image:latest
-docker run -p 9091:9091 gcr.io/[PROJECT_ID]/welcome_image:latest
 ```
 
 ```
@@ -61,9 +60,8 @@ sudo virtualenv venv
 source venv/bin/activate
 pip3 install -r requirements.txt
 
-docker build -t welcome_image .
-docker tag welcome_image k3d-mycluster-registry:5000/welcome_image:v0.1
-docker push k3d-mycluster-registry:5000/welcome_image:v0.1
-docker run -p 9091:9091 k3d-mycluster-registry:5000/welcome_image:v0.1
+kubectl apply -f deployment.yml
+kubectl get pod,svc
+kubectl port-forward svc/app-welcome-svc 8080:9091
 ```
 
