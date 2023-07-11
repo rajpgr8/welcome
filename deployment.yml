@@ -14,22 +14,21 @@ spec:
     spec:
       containers:
         - name: app-welcome
-          image: [IMAGE] 
-          resources: 
-            limits: 
-              memory: "512Mi"
-              cpu: "500m"
+          image: k3d-mycluster-registry:5000/welcome_image:v0.1 
+          requests:
+            memory: "32Mi"
+            cpu: "50m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
           ports: 
           - containerPort: 9091
-
 ---
-
 apiVersion: v1
 kind: Service
 metadata: 
   name: app-welcome-svc
 spec: 
-  type: LoadBalancer
   selector: 
     app: app-welcome
   ports: 
