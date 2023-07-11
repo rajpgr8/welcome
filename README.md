@@ -43,3 +43,24 @@ Note 2: fixture method setup() defined in conftest.py file will always be execut
         similarly we can wrap all tests (which are dependent on fixture method) into a class (see test_app3.py) and mark that class as usefixtures.
 Note 3: we can pass data from fixture method also we can parametrize our test case (see conftest.py and test_app3.py)
 ```
+
+##### k3d local development 
+```
+sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
+sudo ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx
+sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
+curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
+k3d registry create mycluster-registry --port 5000
+k3d cluster create mycluster --registry-use mycluster-registry:5000
+source <(kubectl completion bash) 
+echo "source <(kubectl completion bash)" >> ~/.bashrc 
+sudo su -
+echo "127.0.0.1 k3d-mycluster-registry" >> /etc/hosts
+exit
+sudo cat /etc/hosts
+kubens
+
+docker tag welcome_image k3d-mycluster-registry:5000/welcome_image:v0.1
+docker push k3d-mycluster-registry:5000/welcome_image:v0.1
+docker run -p 9091:9091 k3d-mycluster-registry:5000/welcome_image:v0.1
+```
