@@ -1,5 +1,5 @@
 
-##### Create virtual env, Create kubernetes cluster, Create local registry, Build image 
+##### Create virtual env, Create local kubernetes cluster (k3d), Create local registry, Build image 
 ```
 sudo apt-get update
 sudo apt-get install python3-pip
