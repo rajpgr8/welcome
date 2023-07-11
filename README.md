@@ -44,7 +44,7 @@ Note 2: fixture method setup() defined in conftest.py file will always be execut
 Note 3: we can pass data from fixture method also we can parametrize our test case (see conftest.py and test_app3.py)
 ```
 
-##### k3d local development 
+##### k3d local development : Install K3D, kubectx, kubens, Create K3D cluster, Create local registry, build/push/run image 
 ```
 sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
 sudo ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx
@@ -60,6 +60,7 @@ exit
 sudo cat /etc/hosts
 kubens
 
+docker build -t welcome_image .
 docker tag welcome_image k3d-mycluster-registry:5000/welcome_image:v0.1
 docker push k3d-mycluster-registry:5000/welcome_image:v0.1
 docker run -p 9091:9091 k3d-mycluster-registry:5000/welcome_image:v0.1
