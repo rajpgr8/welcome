@@ -28,7 +28,7 @@ docker build -t welcome_image .
 docker tag welcome_image k3d-mycluster-registry:5000/welcome_image:v0.1
 docker push k3d-mycluster-registry:5000/welcome_image:v0.1
 ```
-###### 3 ways to run this application:
+###### 3 ways to run this application :
 ```
 1.
 python3 src/app.py
