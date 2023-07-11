@@ -44,8 +44,10 @@ sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
 curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
 k3d registry create mycluster-registry --port 5000
 k3d cluster create mycluster --registry-use mycluster-registry:5000
+echo "alias k=kubectl" >> ~/.bashrc
 source <(kubectl completion bash) 
-echo "source <(kubectl completion bash)" >> ~/.bashrc 
+echo "source <(kubectl completion bash)" >> ~/.bashrc
+source ~/.bashrc
 sudo su -
 echo "127.0.0.1 k3d-mycluster-registry" >> /etc/hosts
 exit
