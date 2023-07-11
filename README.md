@@ -1,4 +1,4 @@
-
+[![Python application](https://github.com/rajpgr8/welcome/actions/workflows/python-app.yml/badge.svg)](https://github.com/rajpgr8/welcome/actions/workflows/python-app.yml)
 ##### Create virtual env, Create local kubernetes cluster (k3d), Create local registry, Build image 
 ```
 sudo apt-get update
