@@ -1,4 +1,5 @@
 
+##### k3d local development : Create virtual env, build/push/run image
 ```
 sudo apt-get update
 sudo apt-get install python3-pip
@@ -16,7 +17,9 @@ watch kubectl get pods,deployments,services
 docker tag welcome_image gcr.io/[PROJECT_ID]/welcome_image:latest
 docker push gcr.io/[PROJECT_ID]/welcome_image:latest
 docker run -p 9091:9091 gcr.io/[PROJECT_ID]/welcome_image:latest
+```
 
+```
 Stop and remove all containers: [THINK BEFORE USE]
 docker stop $(docker ps -q)
 docker rm $(docker ps -aq)
@@ -44,7 +47,7 @@ Note 2: fixture method setup() defined in conftest.py file will always be execut
 Note 3: we can pass data from fixture method also we can parametrize our test case (see conftest.py and test_app3.py)
 ```
 
-##### k3d local development : Install K3D, kubectx, kubens, Create K3D cluster, Create local registry, build/push/run image 
+##### k3d local development : Install K3D, kubectx, kubens, Create K3D cluster, Create local registry, Create virtual env, Build/push/run image 
 ```
 sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
 sudo ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx
@@ -59,6 +62,13 @@ echo "127.0.0.1 k3d-mycluster-registry" >> /etc/hosts
 exit
 sudo cat /etc/hosts
 kubens
+
+sudo apt-get update
+sudo apt-get install python3-pip
+sudo pip3 install virtualenv 
+sudo virtualenv venv 
+source venv/bin/activate
+pip3 install -r requirements.txt
 
 docker build -t welcome_image .
 docker tag welcome_image k3d-mycluster-registry:5000/welcome_image:v0.1
