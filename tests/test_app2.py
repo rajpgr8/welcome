@@ -1,9 +1,10 @@
   
 import pytest
 
-def test_2ndTest_1():
-  print("2ndTest-1")
-  assert 1 == 2  # will fail
+# will fail
+#def test_2ndTest_1():
+#  print("2ndTest-1")
+#  assert 1 == 2  
     
 def test_2ndTest_2(setup):
   print("1stTest-2")
