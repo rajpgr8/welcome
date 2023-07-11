@@ -15,12 +15,13 @@ spec:
       containers:
         - name: app-welcome
           image: k3d-mycluster-registry:5000/welcome_image:v0.1 
-          requests:
-            memory: "32Mi"
-            cpu: "50m"
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
+          resources:
+            requests:
+              memory: "32Mi"
+              cpu: "50m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
           ports: 
           - containerPort: 9091
 ---
