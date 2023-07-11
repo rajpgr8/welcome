@@ -20,17 +20,6 @@ docker run -p 9091:9091 gcr.io/[PROJECT_ID]/welcome_image:latest
 ```
 
 ```
-Stop and remove all containers: [THINK BEFORE USE]
-docker stop $(docker ps -q)
-docker rm $(docker ps -aq)
-docker image prune -a
-
-helm create my-app
-helm lint my-app
-helm package my-app
-helm chart push [Artifactory REPO]
-
-
 pytest:
 ---------
 virtualenv -p python3 venv
@@ -75,3 +64,4 @@ docker tag welcome_image k3d-mycluster-registry:5000/welcome_image:v0.1
 docker push k3d-mycluster-registry:5000/welcome_image:v0.1
 docker run -p 9091:9091 k3d-mycluster-registry:5000/welcome_image:v0.1
 ```
+
