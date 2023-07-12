@@ -14,21 +14,25 @@ sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
 curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
 k3d registry create mycluster-registry --port 5000
 k3d cluster create mycluster --registry-use mycluster-registry:5000
+kubens
+
 echo "alias k=kubectl" >> ~/.bashrc
 source <(kubectl completion bash) 
 echo "source <(kubectl completion bash)" >> ~/.bashrc
 source ~/.bashrc
+
 sudo su -
 echo "127.0.0.1 k3d-mycluster-registry" >> /etc/hosts
 exit
 sudo cat /etc/hosts
-kubens
 
 docker build -t welcome_image .
 docker tag welcome_image k3d-mycluster-registry:5000/welcome_image:v0.1
 docker push k3d-mycluster-registry:5000/welcome_image:v0.1
+
+docker image ls
 ```
-###### 3 ways to run this application :
+###### 5 ways to run this application :
 ```
 1.
 python3 src/app.py
@@ -40,6 +44,9 @@ docker run -p 9091:9091 k3d-mycluster-registry:5000/welcome_image:v0.1
 docker-compose up
 
 4.
+make run
+
+5.
 kubectl apply -f deployment.yml
 kubectl get pod,svc
 kubectl port-forward svc/app-welcome-svc 8080:9091
