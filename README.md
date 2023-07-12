@@ -1,13 +1,6 @@
 [![Python application](https://github.com/rajpgr8/welcome/actions/workflows/python-app.yml/badge.svg)](https://github.com/rajpgr8/welcome/actions/workflows/python-app.yml)
-##### Create virtual env, Create local kubernetes cluster (k3d), Create local registry, Build image 
+##### Create local kubernetes cluster (k3d), Create local registry 
 ```
-sudo apt-get update
-sudo apt-get install python3-pip
-sudo pip3 install virtualenv 
-sudo virtualenv venv 
-source venv/bin/activate
-pip3 install -r requirements.txt
-
 sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
 sudo ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx
 sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
@@ -25,6 +18,18 @@ sudo su -
 echo "127.0.0.1 k3d-mycluster-registry" >> /etc/hosts
 exit
 sudo cat /etc/hosts
+
+kubens
+kubectl get all
+```
+##### Create python virtual env, Build image 
+```
+sudo apt-get update
+sudo apt-get install python3-pip
+sudo pip3 install virtualenv 
+sudo virtualenv venv 
+source venv/bin/activate
+pip3 install -r requirements.txt
 
 docker build -t welcome_image .
 docker tag welcome_image k3d-mycluster-registry:5000/welcome_image:v0.1
