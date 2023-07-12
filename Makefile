@@ -1,8 +1,14 @@
 .PHONY: setup
-setup: virtualenv -p python3 venv && source venv/bin/activate && pip3 install pytest
-
+setup: 
+	python -m venv . && . ./venv/bin/activate && pip3 install pytest
+	
 .PHONY: test
 test: setup
-      pytest
+	pytest
+
+.PHONY: run
+run: setup
+	docker-compose up
+
 
 
