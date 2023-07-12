@@ -8,7 +8,7 @@ test: setup
 
 .PHONY: run
 run: setup
-	docker-compose up
+	docker-compose up --build
 
 
 
