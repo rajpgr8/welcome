@@ -37,6 +37,9 @@ python3 src/app.py
 docker run -p 9091:9091 k3d-mycluster-registry:5000/welcome_image:v0.1
 
 3.
+docker-compose up
+
+4.
 kubectl apply -f deployment.yml
 kubectl get pod,svc
 kubectl port-forward svc/app-welcome-svc 8080:9091
