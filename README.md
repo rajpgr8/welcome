@@ -71,3 +71,61 @@ Note 2: fixture method setup() defined in conftest.py file will always be execut
         similarly we can wrap all tests (which are dependent on fixture method) into a class (see test_app3.py) and mark that class as usefixtures.
 Note 3: we can pass data from fixture method also we can parametrize our test case (see conftest.py and test_app3.py)
 ```
+###### Imp command about docker
+```
+=> Stop and remove all containers:
+docker stop $(docker ps -q)
+docker rm $(docker ps -aq)
+docker image prune -a
+
+=> Docker Debug:
+docker logs [container_id]
+docker exec -it [container_id] bash
+docker inspect [container_id]
+docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' [container_id]
+docker stats
+docker info
+docker image ls
+docker ps
+```
+###### Imp command about kubectl
+```
+kubectl get pod <POD_NAME> 
+kubectl describe pod <POD_NAME> 
+kubectl explain pods <POD_NAME>
+kubectl logs -f <POD_NAME> 
+kubectl exec -it <POD_NAME> -- /bin/bash
+
+kubectl get event
+kubectl top nodes
+kubectl top pods
+
+kubectl cp :</path/to/remote/file> </path/to/local/file>
+```
+###### Imp command about helm
+```
+helm repo add argo https://argoproj.github.io/argo-helm
+helm repo update
+helm search repo argo
+
+helm pull argo/argo-cd --version 5.26.0 --untar --untardir argocd
+
+helm upgrade --install my-argo-cd argo/argo-cd --version 5.26.0 --dry-run
+helm uninstall my-argo-cd 
+helm rollback my-argo-cd
+
+helm ls
+helm history
+helm show
+helm show values argo/argo-cd > values.yaml
+
+helm dependency list
+helm dependency update
+
+helm template . --validate
+helm template . --values values.yaml --debug
+helm template . --values values.yaml --show-only templates/deployment.yaml | less
+
+helm lint
+yamllint <yaml file>
+```
