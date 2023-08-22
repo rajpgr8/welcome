@@ -1,6 +1,8 @@
 [![Python application](https://github.com/rajpgr8/welcome/actions/workflows/python-app.yml/badge.svg)](https://github.com/rajpgr8/welcome/actions/workflows/python-app.yml)
 ##### Create local kubernetes cluster (k3d), Create local registry 
 ```
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
 sudo ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx
 sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
