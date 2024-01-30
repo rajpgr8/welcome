@@ -102,7 +102,7 @@ kubectl logs -f <POD_NAME>
 
 To see cpu/memory load:
     Kubectl top node
-    Kubectl top node
+    Kubectl top pod
     Kubectl descibe PodMetrics <POD_NAME>
 
 To Debug container:    
