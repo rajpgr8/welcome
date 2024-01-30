@@ -4,8 +4,8 @@
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
-sudo ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx
-sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
+sudo ln -sf /opt/kubectx/kubectx /usr/local/bin/kubectx
+sudo ln -sf /opt/kubectx/kubens /usr/local/bin/kubens
 curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
 
 echo "alias k=kubectl" >> ~/.bashrc
@@ -23,7 +23,7 @@ exit
 sudo cat /etc/hosts
 
 kubens
-kubectl get all
+k get all
 ```
 ##### Create python virtual env, Build image 
 ```
@@ -93,17 +93,29 @@ docker ps
 ```
 ###### Imp command about kubectl
 ```
+kubectl get event
+
 kubectl get pod <POD_NAME> 
 kubectl describe pod <POD_NAME> 
 kubectl explain pods <POD_NAME>
 kubectl logs -f <POD_NAME> 
-kubectl exec -it <POD_NAME> -- /bin/bash
 
-kubectl get event
-kubectl top nodes
-kubectl top pods
+To see cpu/memory load:
+    Kubectl top node
+    Kubectl top node
+    Kubectl descibe PodMetrics <POD_NAME>
+
+To Debug container:    
+    Kubectl exec -it <POD_NAME> -- /bin/bash
+Now since kubernetes v1.25 we can use Ephemeral Containers to debug application.
+    kubectl debug <POD_NAME> -it –image=alpine –target=<CONTAINER_NAME>
 
 kubectl cp :</path/to/remote/file> </path/to/local/file>
+
+To test if internet connectivity is there or not from pods:
+    kubectl run curl-test --image=curlimage/curl:latest --attach --quiet --restart=Never --rm  -- \
+    curl --fail --show-error --silent --max-time 10 --head https://google.com
+
 ```
 ###### Imp command about helm
 ```
