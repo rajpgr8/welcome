@@ -144,3 +144,16 @@ helm template . --values values.yaml --show-only templates/deployment.yaml | les
 helm lint
 yamllint <yaml file>
 ```
+
+##### Other Important read:
+1. https://refactoring.guru/design-patterns  
+2. https://12factor.net/  
+3. https://microservices.io/
+
+4. https://sre.google/sre-book/table-of-contents/
+5. https://sre.google/workbook/table-of-contents/
+
+6. https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html
+7. https://www.amazon.jobs/en/principles?ref=wellarchitected-wp    
+
+8. https://developer.okta.com/blog/2019/10/21/illustrated-guide-to-oauth-and-oidc
